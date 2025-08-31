@@ -1,0 +1,156 @@
+:root{
+    --exito : #3ab65c;
+    --error : #bf333b;
+    --info : #1898c0;
+    --warning : #bc8c12;
+    --exito-hover : #2d8a46;
+    --error-hover : #962a31;
+    --info-hover : #147fa0;
+    --warning-hover : #9b7512;
+}
+
+/* Buttons in general */
+.btn{
+    padding: 10px 20px;
+    font-style: 20px;
+    background: #000;
+    border: none;
+    cursor: pointer;
+    background-repeat: 5px;
+    transition: 0.3s ease all;
+    border-radius: 5px;
+}
+
+
+/* Each button */
+.btn.exito{
+    background: var(--exito);
+}
+.btn.error{
+    background: var(--error);
+}
+.btn.info{
+    background: var(--info);
+}
+.btn.warning{
+    background: var(--warning);
+}
+
+/* Each button hover */
+.btn.exito:hover{
+    background: var(--exito-hover);
+}
+.btn.error:hover{
+    background: var(--error-hover);
+}
+.btn.info:hover{
+    background: var(--info-hover);
+}
+.btn.warning:hover{
+    background: var(--warning-hover);
+}
+
+/* Toasts Styles */
+.container-toast{
+    position: fixed;
+    width: 100%;
+    max-width: 400px;
+    right: 40px;
+    top: 40px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column-reverse;
+}
+
+.toast{
+    border-radius: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: apertura 300ms ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.toast.cerrando{
+    animation: cierre 300ms ease-out forwards;
+}
+
+.toast.auto-cierre::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    animation: autoCierre 2s ease-in-out forwards;
+}
+
+.toast.error {background-color: var(--error);}
+
+.toast.info {background-color: var(--info);}
+
+.toast.great {background-color: var(--exito);}
+
+.toast.warning {background-color: var(--warning);}
+
+.main-toast{
+    display: grid;
+    grid-template-columns: 30px auto;
+    gap: 15px;
+    padding: 5px 15px;
+    align-items: center;
+}
+
+.main-toast .toast-icon{
+    color: rgba(0, 0, 0, 0.3);
+    font-size: 1.5rem;
+}
+
+.toast-text .tittle-toast{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.toast .btn-cerrar{
+    border: none;
+    background-color: rgba(0, 0, 0, 0.1);
+    font-size: 2rem;
+    padding: .25rem .5rem;
+    display: flex;
+    justify-content: center;
+    transition: .3s ease all;
+    height: 100%; 
+}
+
+.toast .btn-cerrar:hover{ background: rgba(0, 0, 0, 0.3);}
+
+@keyframes apertura {
+    from{
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes cierre {
+    from {
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(calc(100% + 40px));
+    }
+}
+
+@keyframes autoCierre {
+    from{
+        width: 100%;
+    }
+    to{
+        width: 0;
+    }
+}
